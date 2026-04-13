@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlnikola <vlnikola@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 13:59:20 by vlnikola          #+#    #+#             */
-/*   Updated: 2026/04/13 15:20:13 by vlnikola         ###   ########.fr       */
+/*   Created: 2026/04/13 14:22:18 by vlnikola          #+#    #+#             */
+/*   Updated: 2026/04/13 15:32:59 by vlnikola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "codexion.h"
-#include "parse.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	main(int argc, char **argv)
-{
-	t_config	config;
+# include "codexion.h"
 
-	if (!parse_args(argc, argv, &config))
-		return (1);
-	return (0);
-}
+int		uatol(const char *str, long *result);
+
+#endif

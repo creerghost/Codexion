@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vlnikola <vlnikola@student.42prague.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/04/13 15:19:50 by vlnikola          #+#    #+#              #
+#    Updated: 2026/04/13 15:32:59 by vlnikola         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -pthread
 INCLUDES = -I./includes
-SRCS = main.c src/parse_args.c
+SRCS = main.c src/parse_args.c src/uatol.c
 OBJ_DIR = .obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 NAME = codexion
