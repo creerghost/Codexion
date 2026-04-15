@@ -15,6 +15,8 @@
 
 # include "codexion.h"
 
-int		uatol(const char *str, long *result);
+int			uatol(const char *str, long *result);
+long long	get_time_ms(void);
+void		precise_sleep(long long time_in_ms);
 
 #endif

@@ -16,30 +16,6 @@
 # include "codexion.h"
 
 /**
- * Supported dongle arbitration policies.
- */
-typedef enum e_scheduler
-{
-	CODEX_SCHED_FIFO = 0,
-	CODEX_SCHED_EDF = 1
-}				t_scheduler;
-
-/**
- * Runtime configuration parsed from CLI arguments.
- */
-typedef struct s_config
-{
-	int			number_of_coders;
-	int			time_to_burnout;
-	int			time_to_compile;
-	int			time_to_debug;
-	int			time_to_refactor;
-	int			number_of_compiles_required;
-	int			dongle_cooldown;
-	t_scheduler	scheduler;
-}				t_config;
-
-/**
  * Mapping entry between a config integer field and its argument label.
  */
 typedef struct s_int_arg

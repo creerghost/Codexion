@@ -13,7 +13,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -pthread
 INCLUDES = -I./includes
-SRCS = main.c src/parse_args.c src/uatol.c
+SRCS = main.c src/parse_args.c src/uatol.c src/time.c
 OBJ_DIR = .obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 NAME = codexion
