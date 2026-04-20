@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef UTILS_H
-# define UTILS_H
+#define UTILS_H
 
-# include "codexion.h"
+#include "codexion.h"
 
-int			uatol(const char *str, long *result);
-long long	get_time_ms(void);
-void		precise_sleep(long long time_in_ms);
+int uatol(const char *str, long *result);
+long long get_time_ms(void);
+void precise_sleep(long long time_in_ms);
 
 #endif

@@ -12,12 +12,16 @@
 
 #include "codexion.h"
 #include "parse.h"
+#include "init.h"
 
 int	main(int argc, char **argv)
 {
 	t_config	config;
+	t_sim		sim;
 
 	if (!parse_args(argc, argv, &config))
+		return (1);
+	if (!init_sim(&sim, &config))
 		return (1);
 	return (0);
 }

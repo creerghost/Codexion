@@ -1,0 +1,4 @@
+-I./coders/includes
+-Wall
+-Wextra
+-Werror
