@@ -13,7 +13,7 @@
 #include "codexion.h"
 #include "parse.h"
 #include "init.h"
-#include "queue.h"
+#include "sim.h"
 
 int	main(int argc, char **argv)
 {
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 	if (!parse_args(argc, argv, &config))
 		return (1);
 	if (!init_sim(&sim, &config))
+		return (1);
+	if (!start_sim(&sim))
 		return (1);
 	return (0);
 }

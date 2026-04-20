@@ -38,7 +38,9 @@ void	*coder_routine(void *arg)
 		print_action(coder, "is compiling");
 		precise_sleep(coder->sim->config.time_to_compile);
 		release_dongles(coder);
+		pthread_mutex_lock(&coder->sim->monitor_lock);
 		coder->compile_count++;
+		pthread_mutex_unlock(&coder->sim->monitor_lock);
 		print_action(coder, "is debugging");
 		precise_sleep(coder->sim->config.time_to_debug);
 		if (coder->compile_count == coder->sim->config.number_of_compiles_required)
