@@ -11,22 +11,31 @@ static void	init_ticket(t_coder *coder, t_req *req)
 	req->next = NULL;
 }
 
+static int	is_stopped(t_sim *sim)
+{
+	int	stop;
+
+	pthread_mutex_lock(&sim->monitor_lock);
+	stop = sim->stop_flag;
+	pthread_mutex_unlock(&sim->monitor_lock);
+	return (stop);
+}
+
 static int	request_and_wait(t_dongle *dongle, t_coder *coder, t_sim *sim)
 {
 	t_req	req;
 
 	init_ticket(coder, &req);
 	pthread_mutex_lock(&dongle->lock);
+	if (is_stopped(sim))
+		return (pthread_mutex_unlock(&dongle->lock), 0);
 	enqueue_req(dongle, &req, sim);
 	if (sim->config.scheduler == CODEX_SCHED_EDF)
 		pthread_cond_broadcast(&dongle->cond);
 	while (1)
 	{
-		pthread_mutex_lock(&sim->monitor_lock);
-		if (sim->stop_flag)
-			return (pthread_mutex_unlock(&sim->monitor_lock),
-				pthread_mutex_unlock(&dongle->lock), 0);
-		pthread_mutex_unlock(&sim->monitor_lock);
+		if (is_stopped(sim))
+			return (pthread_mutex_unlock(&dongle->lock), 0);
 		if (is_turn(dongle, &req) && dongle->is_available)
 		{
 			if (get_time_ms() < dongle->available_at)
