@@ -1,4 +1,5 @@
 #include "codexion.h"
+#include <stdlib.h>
 
 static void free_all(t_sim *sim, int coders, int dongles,
 	int m_print, int m_lock)

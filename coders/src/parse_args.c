@@ -13,6 +13,8 @@
 #include "codexion.h"
 #include "parse.h"
 #include "utils.h"
+#include <stdio.h>
+#include <string.h>
 
 /**
  * Parse one numeric argument and store it in the destination field.
