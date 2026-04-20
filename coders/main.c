@@ -13,6 +13,7 @@
 #include "codexion.h"
 #include "parse.h"
 #include "init.h"
+#include "queue.h"
 
 int	main(int argc, char **argv)
 {
