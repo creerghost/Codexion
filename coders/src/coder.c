@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   coder.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlnikola <vlnikola@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/08 09:19:02 by vlnikola          #+#    #+#             */
+/*   Updated: 2026/05/08 09:34:23 by vlnikola         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "codexion.h"
 #include "utils.h"
 #include "dongle.h"
@@ -14,14 +26,13 @@ static void	print_action(t_coder *coder, char *action)
 		return ;
 	}
 	pthread_mutex_unlock(&coder->sim->monitor_lock);
-	printf("Coder %d %s\n", coder->id, action);	
+	printf("Coder %d %s\n", coder->id, action);
 	pthread_mutex_unlock(&coder->sim->print_lock);
 }
 
-
 void	*coder_routine(void *arg)
 {
-	t_coder *coder;
+	t_coder	*coder;
 
 	coder = (t_coder *)arg;
 	if (coder->id % 2 != 0)
@@ -31,7 +42,7 @@ void	*coder_routine(void *arg)
 		print_action(coder, "is refactoring");
 		precise_sleep(coder->sim->config.time_to_refactor);
 		if (!take_dongles(coder))
-			break;
+			break ;
 		pthread_mutex_lock(&coder->sim->monitor_lock);
 		coder->last_compile_start = get_time_ms();
 		pthread_mutex_unlock(&coder->sim->monitor_lock);
@@ -43,8 +54,9 @@ void	*coder_routine(void *arg)
 		pthread_mutex_unlock(&coder->sim->monitor_lock);
 		print_action(coder, "is debugging");
 		precise_sleep(coder->sim->config.time_to_debug);
-		if (coder->compile_count == coder->sim->config.number_of_compiles_required)
-			break;
+		if (coder->compile_count
+			== coder->sim->config.number_of_compiles_required)
+			break ;
 	}
 	return (NULL);
 }

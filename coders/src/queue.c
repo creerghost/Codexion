@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   queue.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlnikola <vlnikola@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/08 09:19:12 by vlnikola          #+#    #+#             */
+/*   Updated: 2026/05/08 09:28:35 by vlnikola         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "codexion.h"
 
 void	fifo_insert(t_dongle *dongle, t_req *req)
 {
-	t_req *curr;
+	t_req	*curr;
 
 	req->next = NULL;
 	if (dongle->queue_head == NULL)
@@ -18,8 +30,8 @@ void	fifo_insert(t_dongle *dongle, t_req *req)
 
 void	edf_insert(t_dongle *dongle, t_req *req)
 {
-	t_req *curr;
-	t_req *prev;
+	t_req	*curr;
+	t_req	*prev;
 
 	req->next = NULL;
 	if (dongle->queue_head == NULL)
@@ -51,7 +63,7 @@ void	enqueue_req(t_dongle *dongle, t_req *req, t_sim *sim)
 
 t_req	*dequeue_req(t_dongle *dongle)
 {
-	t_req *req;
+	t_req	*req;
 
 	if (dongle->queue_head == NULL)
 		return (NULL);
